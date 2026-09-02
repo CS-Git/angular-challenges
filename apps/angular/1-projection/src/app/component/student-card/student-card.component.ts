@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -12,19 +13,18 @@ import { CardComponent } from '../../ui/card/card.component';
 @Component({
   selector: 'app-student-card',
   template: `
-    <app-card
-      [list]="students()"
-      [type]="cardType"
-      customClass="bg-light-green" />
+    <app-card [list]="students()" class="bg-light-green">
+      <img ngSrc="assets/img/student.webp" width="200" height="200" alt="" />
+    </app-card>
   `,
   styles: [
     `
-      ::ng-deep .bg-light-green {
+      .bg-light-green {
         background-color: rgba(0, 250, 0, 0.1);
       }
     `,
   ],
-  imports: [CardComponent],
+  imports: [CardComponent, NgOptimizedImage],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StudentCardComponent implements OnInit {
